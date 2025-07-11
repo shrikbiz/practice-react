@@ -6,6 +6,9 @@ import PhoneInput from "./Components/PhoneInput";
 import Counter from "./Components/Counter";
 import EmploymentForms from "./Components/EmploymentForms";
 import Countries from "./Components/Countries";
+import ZoomInterview from "./Components/ZoomInterview";
+import UberInterview from "./Components/UberInverview";
+import Calculator from "./Components/Calculator/Calculator";
 
 export const NavigationPaths = [
     {
@@ -39,14 +42,29 @@ export const NavigationPaths = [
         component: <EmploymentForms />,
     },
     {
-        path: "/countries",
-        name: "Countries",
-        component: <Countries />,
+        path: "/calculator",
+        name: "Calculator",
+        component: <Calculator />,
     },
+    // {
+    //     path: "/countries",
+    //     name: "Countries",
+    //     component: <Countries />,
+    // },
+    // {
+    //     path: "/employmentForms",
+    //     name: "Employment forms",
+    //     component: <EmploymentForms />,
+    // },
+    // {
+    //     path: "/zoomInterview",
+    //     name: "Zoom interview",
+    //     component: <ZoomInterview />,
+    // },
     {
-        path: "/employmentForms",
-        name: "Employment forms",
-        component: <EmploymentForms />,
+        path: "/uberInterview",
+        name: "Uber interview",
+        component: <UberInterview />,
     },
 ];
 
