@@ -67,6 +67,7 @@ const CircleDrawer = () => {
 
     useEffect(() => {
         redraw();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [circles, tempCircle]);
 
     return (
