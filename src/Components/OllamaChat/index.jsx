@@ -1,8 +1,11 @@
 import { useEffect, useState, useRef } from "react";
-import { decodeAndStreamResponse, requestOllama } from "./util";
+import { decodeAndStreamResponse, requestOllama } from "./Components/util";
 
-import TextEditor from "./TextEditor";
-import ChatList from "./ChatList";
+import TextEditor from "./Components/TextEditor";
+import Threads from "./Components/Animations/Threads";
+import GradientText from "./Components/Animations/GradientText";
+import ChatList from "./Components/ChatList";
+import WelcomeScreen from "./Components/WelcomeScreen";
 
 export default function OllamaChat() {
     const [input, setInput] = useState("");
@@ -91,8 +94,13 @@ export default function OllamaChat() {
                     width: "100%",
                 }}
             >
-                <ChatList chatItems={chatItems} />
+                {chatItems.length ? (
+                    <ChatList chatItems={chatItems} />
+                ) : (
+                    <WelcomeScreen />
+                )}
             </div>
+
             <TextEditor
                 handleRun={handleRun}
                 input={input}

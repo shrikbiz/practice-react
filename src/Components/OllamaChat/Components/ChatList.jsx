@@ -1,4 +1,5 @@
-import MarkdownRenderer from "./Components/MarkdownRenderer";
+import GradientText from "./Animations/GradientText";
+import MarkdownRenderer from "./MarkdownRenderer";
 
 export default function ChatList({ chatItems }) {
     return (
@@ -54,7 +55,21 @@ export default function ChatList({ chatItems }) {
                             </pre>
                         </div>
                     ) : chatItem.isLoading ? (
-                        "Loading..."
+                        <GradientText
+                            colors={[
+                                "#40ffaa",
+                                "#4079ff",
+                                "#40ffaa",
+                                "#4079ff",
+                                "#40ffaa",
+                            ]}
+                            animationSpeed={3}
+                            showBorder={false}
+                            className="custom-class"
+                        >
+                            {" "}
+                            Thinking{" "}
+                        </GradientText>
                     ) : (
                         <MarkdownRenderer markdown={chatItem.content} />
                     )}
