@@ -1,10 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { decodeAndStreamResponse, requestOllama } from "./Components/util";
-
 import TextEditor from "./Components/TextEditor";
-import Threads from "./Components/Animations/Threads";
-import GradientText from "./Components/Animations/GradientText";
-import ChatList from "./Components/ChatList";
+import ChatList from "./Components/ChatItems/ChatList";
 import WelcomeScreen from "./Components/WelcomeScreen";
 
 export default function OllamaChat() {
@@ -85,20 +82,47 @@ export default function OllamaChat() {
             }}
         >
             <div
-                ref={chatListRef}
                 style={{
+                    position: "relative",
                     flex: 1,
-                    overflowY: "auto",
-                    padding: "24px 0",
-                    boxSizing: "border-box",
                     width: "100%",
+                    overflow: "hidden",
                 }}
             >
-                {chatItems.length ? (
+                <div
+                    ref={chatListRef}
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        transition:
+                            "opacity 0.4s cubic-bezier(.4,0,.2,1), visibility 0.4s",
+                        opacity: chatItems.length ? 1 : 0,
+                        visibility: chatItems.length ? "visible" : "hidden",
+                        pointerEvents: chatItems.length ? "auto" : "none",
+                        overflowY: "auto",
+                        padding: "24px 0",
+                        boxSizing: "border-box",
+                        width: "100%",
+                        height: "100%",
+                    }}
+                >
                     <ChatList chatItems={chatItems} />
-                ) : (
+                </div>
+                <div
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        transition:
+                            "opacity 0.4s cubic-bezier(.4,0,.2,1), visibility 0.4s",
+                        opacity: chatItems.length ? 0 : 1,
+                        visibility: chatItems.length ? "hidden" : "visible",
+                        pointerEvents: chatItems.length ? "none" : "auto",
+                        width: "100%",
+                        height: "100%",
+                    }}
+                >
                     <WelcomeScreen />
-                )}
+                </div>
             </div>
 
             <TextEditor
